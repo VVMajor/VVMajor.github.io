@@ -1,0 +1,8 @@
+# Permalinks
+permalink: pretty
+
+pages_list: {'JavaAlgorithms':'https://github.com/VVMajor/JavaAlgorithms','About':'/about','Contact':'/contact'}
+pages_list_future: {'About':'/about','Archive':'/archive','Contact':'/contact','Feed':'/atom.xml'}
+
+my_setting1: "(c) VVMajor"
+my_setting2: "2015"

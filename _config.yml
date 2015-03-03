@@ -2,7 +2,7 @@
 permalink: pretty
 
 pages_list: {'JavaAlgorithms':'https://github.com/VVMajor/JavaAlgorithms','About':'/about','Contact':'/contact'}
-pages_list_future: {'About':'/about','Archive':'/archive','Contact':'/contact','Feed':'/atom.xml'}
+pages_list_future: {'Archive':'/archive','Feed':'/atom.xml'}
 
-my_setting1: "(c) VVMajor"
-my_setting2: "2015"
+copyString: "&copy; VVMajor"
+copyDate: "2015"

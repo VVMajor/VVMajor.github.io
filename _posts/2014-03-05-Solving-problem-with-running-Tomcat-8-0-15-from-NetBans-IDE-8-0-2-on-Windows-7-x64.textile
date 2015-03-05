@@ -1,0 +1,27 @@
+---
+layout: post
+title: Solving problem with running Tomcat 8.0.15 from NetBans IDE 8.0.2 on Windows 7 x64
+---
+
+Edit the file "C:\Program Files\Apache Software Foundation\Apache Tomcat 8.0.15\bin\catalina.bat"
+
+:noJuliConfig
+set "JAVA_OPTS=%JAVA_OPTS% %LOGGING_CONFIG%"
+
+must be 
+
+:noJuliConfig
+set JAVA_OPTS=%JAVA_OPTS% %LOGGING_CONFIG%
+
+and 
+
+:noJuliManager
+set "JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%"
+
+must be
+
+:noJuliManager
+set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%
+
+i.e. You must remove quotes in two lines of .bat file.
+Note: You must run notepad.exe "As Administrator" tobe able to save changes.

@@ -5,7 +5,7 @@ title: Main page
 
 Hello, surfer!
 
-Blog Posts
+Blog Posts aka notes.
 
 {% for post in site.posts %}
   * {{ post.date | date_to_string }} &raquo; [ {{ post.title }} ]({{ post.url }})

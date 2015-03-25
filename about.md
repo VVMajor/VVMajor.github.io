@@ -24,7 +24,7 @@ I improved my programming skills while creating my applications and services, wh
     JavaScript
     Windows and Unix shell languages.
 
-I have got a practical experience in successfull architecting and managing of databases based on various platforms:
+I have got a practical experience in successful architecting and managing of databases based on various platforms:
 
     Interbase / Firebird
     MSSQL

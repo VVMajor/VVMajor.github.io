@@ -1,7 +1,7 @@
 # Permalinks
 permalink: pretty
 
-pages_list: {'JavaAlgorithms':'https://github.com/VVMajor/JavaAlgorithms','WP Workbench':'http://wp.vvmajor.tk/','About Author':'/about','Contact':'/contact'}
+pages_list: {'JavaAlgorithms':'https://github.com/VVMajor/JavaAlgorithms','CmdLinkStatus':'https://github.com/VVMajor/VVMAJOR_CmdLinkStatus','WP Workbench':'http://wp.vvmajor.tk/','About Author':'/about','Contact':'/contact'}
 pages_list_future: {'Archive':'/archive','Feed':'/atom.xml'}
 
 copyString: "&copy; VVMajor"

@@ -1,0 +1,17 @@
+---
+layout: post
+title: Audio Monitoring Of A Link Status, Listen Sound Alarm In Windows During Network Disconnections
+---
+
+If Your internet connection is not always stable - sometimes you can be, like me, in such unpleasant situation:
+
+ - You wait for a Skype message.
+ - You don't look to your monitor. 
+ - Your computer lost connection and are in the offline mode.
+ - And You don't realize it, until You clap eyes many hours later.
+
+With my simple command file You can audio monitoring a connection failures. Just run it and You will listen ticking sound every 3 second of your disconnection.
+
+https://github.com/VVMajor/VVMAJOR_CmdLinkStatus/blob/master/VVMAJORLinkStatus.cmd
+
+Sorry, my English is not perfect :)

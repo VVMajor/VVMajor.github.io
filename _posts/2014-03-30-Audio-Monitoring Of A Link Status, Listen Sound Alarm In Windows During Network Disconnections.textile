@@ -12,6 +12,6 @@ If Your internet connection is not always stable - sometimes you can be, like me
 
 With my simple command file You can audio monitoring a connection failures. Just run it and You will listen ticking sound every 3 second of your disconnection.
 
-https://github.com/VVMajor/VVMAJOR_CmdLinkStatus/blob/master/VVMAJORLinkStatus.cmd
+[VVMAJORLinkStatus.cmd](https://raw.githubusercontent.com/VVMajor/VVMAJOR_CmdLinkStatus/master/VVMAJORLinkStatus.cmd)
 
 Sorry, my English is not perfect :)

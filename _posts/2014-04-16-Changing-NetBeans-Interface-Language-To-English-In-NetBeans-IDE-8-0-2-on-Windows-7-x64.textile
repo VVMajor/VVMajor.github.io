@@ -1,0 +1,20 @@
+---
+layout: post
+title: Changing NetBeans Interface Language To English In NetBans IDE 8.0.2 on Windows 7 x64
+---
+
+Edit the file "C:\Program Files\NetBeans 8.0.2\etc\netbeans.conf"
+
+<pre><code>
+netbeans_default_options="-J-client -J-Xss2m -J-Xms32m -J-XX:PermSize=32m -J-Dapple.laf.useScreenMenuBar=true -J-Dapple.awt.graphics.UseQuartz=true -J-Dsun.java2d.noddraw=true -J-Dsun.java2d.dpiaware=true -J-Dsun.zip.disableMemoryMapping=true"
+</code></pre>
+
+must be 
+
+<pre><code>
+netbeans_default_options="-J-client -J-Xss2m -J-Xms32m -J-XX:PermSize=32m -J-Dapple.laf.useScreenMenuBar=true -J-Dapple.awt.graphics.UseQuartz=true -J-Dsun.java2d.noddraw=true -J-Dsun.java2d.dpiaware=true -J-Dsun.zip.disableMemoryMapping=true -J-Duser.language=en -J-Duser.region=US"</code></pre>
+</code></pre>
+
+i.e. You must add " -J-Duser.language=en -J-Duser.region=US" in the parameter string netbeans_default_options in netbeans.conf file.
+
+Note: You must run notepad.exe "As Administrator" to be able to save changes.

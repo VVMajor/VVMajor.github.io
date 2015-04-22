@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Brainmade Software Engineering: unique, smart, stylish.
+title: Brainmade Software Engineering - Unique, Intelligent, Stylish.
 ---
 
 Hello, surfer!

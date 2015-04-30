@@ -1,0 +1,489 @@
+<script>
+/**
+ * @author VVMajor[vlad.major gmail com] https://VVMajor.github.io/
+ * This is my variant of the "Conway's Game Of Life".
+ * Some day I wrote this script on my cell phone in the subway in morning,
+ * while rode to the work.
+ * (c)2013-2015 Volodymyr Maiorov
+ */
+
+var xmax=30;
+var ymax=20;
+
+var prb=1;//0.99;
+var stp=150;
+
+var gametype="life";
+//var gametype="snake";
+
+
+var startPrb=15;
+
+//лайф цветной или чернобелый
+//var classic=true;
+var classic=false; 
+
+var cellsize=300/xmax;
+
+//массив для игры лайф
+var af=[];
+
+//массив для игры снейк
+var arrsnake=[];
+
+
+//сокращалки
+var d=document;
+
+ function id(x,y)
+{
+ return "x"+x+"y"+y+"" 
+} 
+
+function dw(t)
+{
+d.write(t);
+}
+
+//dw(id(123,456));
+
+//нарисовать таблицу
+//draw table
+function dt(x,y)
+{
+dw("<table border=\"0\">");
+// dw("<table width=\"100%\" border=\"0px\">");
+ 
+for (var yi=1;yi<=y;yi++){
+ dw("<tr>"); 
+
+ for (var xi=1;xi<=x;xi++){
+ dw("<td id=\""+id(xi,yi)+"\" bgColor=\"gray\" height=\""+ cellsize+ " px\" width=\""+ cellsize+ " px\">"); 
+ //dw(""+xi+"-"+yi); 
+//dw("&nbsp;");
+//dw("*");
+ dw("</td>"); 
+} 
+
+ dw("</tr>"); 
+}
+
+dw("</table>");
+}
+
+function el(x,y)
+{
+return d.getElementById(id(x,y));
+}
+
+
+
+
+var r,g,b;
+
+function de(x,y) 
+{ 
+
+b= Math.round(af[2][x][y]*128+ af[1][x][y]*64+0); 
+r= Math.round(af[4][x][y]*128 + af[3][x][y]*64 +0 ); 
+g= Math.round(af[6][x][y]*128 + af[5][x][y]*64 +0 );
+
+el(x,y).style.backgroundColor="rgb("+r +","+ g+","+ b +")" ;
+} 
+ 
+
+dw("<html><body bgcolor=\"gray\">");
+
+dt(xmax,ymax);
+
+//dw("<input type=\"text\" id=\"stpcnt\">");
+dw("<h1 id=\"stpcntbig\"/>");
+dw("</body></html>");
+
+ var curstep=0;
+//show step
+function ss(){
+    curstep++;
+//d.getElementById("stpcnt").value=curstep; 
+d.getElementById("stpcntbig").innerHTML= curstep; 
+} 
+
+function df(x,y)
+{
+
+ for (var yi=1;yi<=y;yi++){
+ 
+ for (var xi=1;xi<=x;xi++){/*
+if(field[xi][yi])
+{
+ on(xi,yi)
+}else{
+ off(xi,yi);
+}*/
+de(xi,yi);
+} 
+} 
+}
+
+function rnd(x, y){
+ if(Math.random()<( startPrb/100) ){
+return 1;
+}else{
+return 0;
+}
+}
+
+
+function cf(x,y,fn){
+var arr=[];
+ for (var xi=1;xi<=x;xi++){
+ arr[xi]=[];
+ for (var yi=1;yi<=y;yi++){
+arr[xi][yi]=fn(xi,yi);
+}
+ }
+return arr;
+}
+
+// var field=cf(xmax,ymax,rnd); 
+if(classic){
+ af[1]= af[2]= af[3]= af[4]= af[5]= af[6]= cf(xmax,ymax,rnd); 
+}else{
+
+af[1]= cf(xmax,ymax,rnd);
+field=af[1];
+
+ af[2]= cf(xmax,ymax,f);
+ field=af[2]; 
+
+ af[3]= cf(xmax,ymax,f); 
+ field=af[3]; 
+
+ af[4]= cf(xmax,ymax,rnd);
+field=af[4];
+
+ af[5]= cf(xmax,ymax,f);
+ field=af[5]; 
+
+ af[6]= cf(xmax,ymax,f);
+//field=af[6]; 
+ }
+
+ function rndd(){
+//field=cf(xmax,ymax,rnd); 
+df(xmax,ymax);
+}
+
+if(gametype=="life")
+    {
+rndd();
+    }
+
+function cu(x,y)
+{
+//dw(123);
+if(y==1)
+   {
+      return field[x][ymax];
+   }else{
+       return field[x][y-1]; 
+   }
+}
+
+
+function cd(x,y)
+{
+if(y==ymax)
+   {
+      return field[x][1];
+   }else{
+       return field[x][y+1]; 
+   }
+}
+
+ function cl(x,y)
+{
+if(x==1)
+   {
+      return field[xmax][y];
+   }else{
+       return field[x-1][y]; 
+   }
+}
+
+
+function cr(x,y)
+{
+if(x==xmax)
+   {
+      return field[1][y];
+   }else{
+       return field[x+1][y]; 
+   }
+}
+ 
+ 
+ function cul(x,y)
+{
+var nx=x-1;
+var ny=y-1;
+
+ if(y==1)
+   {
+      ny=ymax;
+   }
+ 
+if(x==1)
+   {
+     nx=xmax;
+   }
+       return field[nx][ny];
+} 
+ 
+
+ function cur(x,y)
+{
+var nx=x+1;
+var ny=y-1;
+
+ if(y==1)
+   {
+      ny=ymax;
+   }
+ 
+if(x==xmax)
+   {
+     nx=1;
+   }
+       return field[nx][ny];
+} 
+
+ 
+ function cdl(x,y)
+{
+var nx=x-1;
+var ny=y+1;
+
+ if(y==ymax)
+   {
+      ny=1;
+   }
+ 
+if(x==1)
+   {
+     nx=xmax;
+   }
+       return field[nx][ny];
+} 
+ 
+
+ function cdr(x,y)
+{
+var nx=x+1;
+var ny=y+1;
+
+ if(y==ymax)
+   {
+      ny=1;
+   }
+ 
+if(x==xmax)
+   {
+     nx=1;
+   }
+       return field[nx][ny];
+} 
+ 
+//dw(1);
+
+ function f(x,y)
+{
+ var n=0;
+
+//dw(n);
+ if(cu(x,y))n++;
+ 
+//dw(n); 
+ if(cd(x,y))n++; 
+ 
+//dw(n); 
+ if(cl(x,y))n++; 
+//dw(n); 
+ if(cr(x,y))n++; 
+//dw(n); 
+ if(cul(x,y))n++; 
+//dw(n); 
+ if(cur(x,y))n++; 
+//dw(n); 
+ if(cdr(x,y))n++; 
+//dw(n); 
+ if(cdl(x,y))n++;
+//dw(n);
+if(Math.random()>prb)return true;
+
+if((!(field[x][y]))&&(n==3)){
+      return true;
+   }else{
+       if( (field[x][y])&&( (n==2)||(n==3)))
+          { 
+             return true;
+          }else{ 
+             return false;
+          }
+   }
+}
+
+ function n1(){
+
+if( !classic){
+af[1]=af[2];
+ af[2]=af[3];
+ af[3]=af[4];
+ af[4]=af[5]; 
+ af[5]=af[6];
+
+ field=af[6];
+ af[6] =cf(xmax,ymax,f); 
+}else{
+ field=af[6];
+ af[6] =cf(xmax,ymax,f); 
+ af[1]=af[2]=af[3]= af[4]=af[5]=af[6];
+
+
+}
+ 
+
+df(xmax,ymax);
+ss();
+} 
+
+//on(2,2);
+//off(3,3);
+
+if(gametype=="life")
+    {
+ setInterval('n1()',stp);
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    //создать двухмерный массив заданного размера,
+    //// каждый элемент присвоить 0
+    function cfsnake(x,y){
+        
+var arr=[];
+ for (var xi=1;xi<=x;xi++){
+ arr[xi]=[];
+ for (var yi=1;yi<=y;yi++){
+     
+arr[xi][yi]=0;
+
+  }
+ }
+return arr;
+}
+  
+ //нарисовать, что клеточка полная
+  function on(x,y)
+{ 
+el(x,y).style.backgroundColor="green";
+}
+
+
+//нарисовать, что клеточка пустая
+
+ function off(x,y)
+{ 
+el(x,y).style.backgroundColor="blue";
+} 
+
+// нарисовать все клетки в текущем состоянии для игры снейк
+function dfsnake(x,y)
+{
+ for (var yi=1;yi<=y;yi++){
+ for (var xi=1;xi<=x;xi++){
+                if(arrsnake[xi][yi]===1)
+                    {
+                        on(xi,yi);    
+                    }else{
+                        off(xi,yi);         
+                    }                   
+} 
+}
+}
+
+ var xsnake;
+ var ysnake;
+ 
+   function n2()
+   {
+         
+    arrsnake[1][1]=1;    
+    
+    arrsnake[2][3]=1;    
+    
+    arrsnake[5][7]=1;    
+    
+    var maxvova=10;
+    
+    var vova=[];
+    for(var ivova=1;ivova<=maxvova;ivova++)
+        {          
+            vova[ivova]=ivova;   
+        }
+        
+     for (var i=1;i<=maxvova;i++)  
+     {
+         
+      el(i,2).innerHTML="<u>"+vova[i]+"</u>"; 
+      el(i,3).innerHTML="<b>"+vova[i]*2+"</b>";    
+     }
+    
+    arrsnake[xsnake][ysnake]=0;
+    xsnake=xsnake+1;
+    arrsnake[xsnake][ysnake]=1;
+    
+        
+    dfsnake(xmax,ymax);
+    //ss();
+       
+   }
+    
+  if(gametype=="snake")
+    {
+        
+ arrsnake = cfsnake(xmax,ymax); 
+    
+    //    
+    xsnake=3;  
+    ysnake=5;
+    
+ setInterval('n2()',stp);
+    }
+
+/*
+var abc23;
+
+function umnoj(p1,p2)
+{
+    abc23=p1*p2+"tralala";
+    return p1*p2;
+}
+
+abc=umnoj(3,5);
+def1=umnoj(7,7);
+
+dw("<br>");
+dw(def1);
+dw("<br>");
+dw(abc);
+dw("<br>");
+dw(abc23);
+*/
+</script>

@@ -1,0 +1,97 @@
+---
+layout: post
+title: Installing hg Mercurial VCS On MacOS X 10.10.5 For Using With Android Studio 1.2.1.1
+---
+
+Run in terminal:
+
+<pre><code>
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
+
+Press Return (Enter) when prompted.
+
+Enter Your admin's (root) password when prompted.
+
+Wait for "Installation successful!" message.
+
+After that execute in terminal:
+
+<pre><code>
+brew install mercurial
+</code></pre>
+
+Wait for message:
+
+<pre><code>
+==> Summary
+🍺  /usr/local/Cellar/mercurial/3.4.1: 370 files, 5.1M
+</code></pre>
+
+Now You can test it works: execute in terminal
+
+
+<pre><code>
+hg
+</code></pre>
+
+You must see as answer:
+
+<pre><code>
+Mercurial Distributed SCM
+
+basic commands:
+
+ add           add the specified files on the next commit
+ annotate      show changeset information by line for each file
+ clone         make a copy of an existing repository
+ commit        commit the specified files or all outstanding changes
+ diff          diff repository (or selected files)
+ export        dump the header and diffs for one or more changesets
+ forget        forget the specified files on the next commit
+ init          create a new repository in the given directory
+ log           show revision history of entire repository or files
+ merge         merge another revision into working directory
+ pull          pull changes from the specified source
+ push          push changes to the specified destination
+ remove        remove the specified files on the next commit
+ serve         start stand-alone webserver
+ status        show changed files in the working directory
+ summary       summarize working directory state
+ update        update working directory (or switch revisions)
+
+(use "hg help" for the full list of commands or "hg -v" for details)
+</code></pre>
+
+Now in Android Studio go in the menu to:
+
+Android Studio -> Preferences... -> Version Control -> Mercurial
+
+In the field "Path to hg executable" change
+
+<pre><code>
+hg
+</code></pre>
+
+To the 
+
+<pre><code>
+/usr/local/bin/hg
+</code></pre>
+
+Press "Test" button
+
+You must see a message 
+
+<pre><code>
+Hg Executed Successfully
+Mercurial version is 3.4.1
+</code></pre>
+
+Close this message with Ok button.
+
+Close Preferences Dialog with Ok button.
+
+Now you can use Mercurial hg within Android Studio on MacOS X 10.10
+
+Note: You must know the root's password for doing a configuration changes in MacOS X

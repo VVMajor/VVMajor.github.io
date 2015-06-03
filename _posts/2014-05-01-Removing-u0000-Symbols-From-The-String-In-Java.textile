@@ -1,0 +1,14 @@
+---
+layout: post
+title: Removing u0000 Symbols From The String In Java
+---
+
+Pervasive SQL Java library function, which reads a database line returns String fields as Bytes Arrays.
+
+If String field's content is shorter than maximal field length - unused characters will be filled with "\u0000" characters till full length.
+
+To remove them from result String - You must replace them to "nothing", or later You can encounter a problems, for example while saving this String as JSON field.
+
+Ok, it's quite simple:
+
+String(xcursor.getDBytes(92, 65), "cp1251").replaceAll("\u0000", "");

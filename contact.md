@@ -4,5 +4,4 @@ title: Contacts
 
 ---
 
-
-+380502345134
+You can send me SMS to +380502345134

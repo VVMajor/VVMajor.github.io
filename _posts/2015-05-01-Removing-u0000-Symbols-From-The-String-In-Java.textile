@@ -11,4 +11,6 @@ To remove them from result String - You must replace them to "nothing", or later
 
 Ok, it's quite simple:
 
+<pre><code>
 String(xcursor.getDBytes(92, 65), "cp1251").replaceAll("\u0000", "");
+</code></pre>
